@@ -1,0 +1,60 @@
+import javax.swing.*;
+import java.awt.*;
+
+public class Qn1_ComponentSelection extends JFrame {
+    public Qn1_ComponentSelection() {
+        setTitle("Student Registration Form");
+        setLayout(new GridLayout(6, 2, 5, 5));
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+       
+        add(new JLabel("Student Name:"));
+        add(new JTextField());
+
+        add(new JLabel("Age:"));
+        add(new JTextField()); 
+
+        add(new JLabel("Phone Number:"));
+        add(new JTextField()); 
+
+       
+        add(new JLabel("Department:"));
+        String[] departments = {"CS", "IT", "MBA", "BCA", "Civil", "Mechanical",
+                                "Electrical", "Architecture", "Law", "Medicine", "Arts", "Science"};
+        add(new JComboBox<>(departments));
+
+       
+        add(new JLabel("Gender:"));
+        JPanel genderPanel = new JPanel();
+        ButtonGroup bg = new ButtonGroup();
+        JRadioButton male = new JRadioButton("Male");
+        JRadioButton female = new JRadioButton("Female");
+        JRadioButton other = new JRadioButton("Other");
+        bg.add(male); bg.add(female); bg.add(other);
+        genderPanel.add(male); genderPanel.add(female); genderPanel.add(other);
+        add(genderPanel); 
+
+      
+        add(new JLabel("Hobbies:"));
+        JPanel hobbiesPanel = new JPanel();
+        hobbiesPanel.add(new JCheckBox("Singing"));  
+        hobbiesPanel.add(new JCheckBox("Gaming"));
+        hobbiesPanel.add(new JCheckBox("Traveling"));
+        add(hobbiesPanel);
+
+        pack();
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new Qn1_ComponentSelection();
+    }
+}
+
+/*
+WHY these components?
+- JTextField  → free text/numbers, no predefined options
+- JComboBox   → 5+ predefined options, saves space (dropdown)
+- JRadioButton→ 2-4 options, only ONE can be selected at a time
+- JCheckBox   → multiple selections allowed simultaneously
+*/
