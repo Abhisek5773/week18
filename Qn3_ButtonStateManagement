@@ -46,6 +46,6 @@ public class Qn3_ButtonStateManagement extends JFrame {
     }
 
     public static void main(String[] args) {
-        new Question3_ButtonStateManagement();
+        new Qn3_ButtonStateManagement();
     }
 }
