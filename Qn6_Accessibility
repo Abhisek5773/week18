@@ -1,0 +1,43 @@
+
+import javax.swing.*;
+import java.awt.*;
+
+public class Qn6_Accessibility extends JFrame {
+    public Qn6_Accessibility() {
+        setTitle("Accessibility Demo");
+        setLayout(new FlowLayout());
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        JTextField nameField = new JTextField(15);
+        JButton saveBtn  = new JButton("Save");
+        JButton clearBtn = new JButton("Clear");
+
+     
+        saveBtn.setMnemonic('S');  
+        clearBtn.setMnemonic('C');  
+
+       
+        nameField.setToolTipText("Enter your full name here");
+        saveBtn.setToolTipText("Save the form data (Alt+S)");
+        clearBtn.setToolTipText("Clear all fields (Alt+C)");
+
+        
+        saveBtn.getAccessibleContext().setAccessibleDescription("Saves student record to database");
+
+        saveBtn.addActionListener(e ->
+            JOptionPane.showMessageDialog(this, "Saved! Name: " + nameField.getText()));
+        clearBtn.addActionListener(e -> nameField.setText(""));
+
+        add(new JLabel("Name:"));
+        add(nameField);
+        add(saveBtn);
+        add(clearBtn);
+
+        pack();
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new Qn6_Accessibility();
+    }
+}
