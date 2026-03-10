@@ -1,0 +1,52 @@
+
+import javax.swing.*;
+import java.awt.*;
+
+public class Qn4_JTableDisplay extends JFrame {
+    public Qn4_JTableDisplay() {
+        setTitle("Student Records");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(500, 300);
+
+       
+        String[] columns = {"ID", "Name", "Age", "Department"};
+
+        Object[][] data = {
+            {1, "Anush  Yadav",   19, "CS"},
+            {2, "Sangita Rai",   20, "IT"},
+            {3, "Ram Shah",   21, "BCA"},
+            {4, "sita Shrestha", 22, "BBA"},
+        };
+
+       
+        JTable table = new JTable(data, columns);
+
+       
+        table.setRowHeight(30);                                           
+        table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);   
+        table.setDefaultEditor(Object.class, null);                      
+
+      
+        JScrollPane scrollPane = new JScrollPane(table);
+        add(scrollPane, BorderLayout.CENTER);
+
+       
+        JButton getBtn = new JButton("Get Selected Row");
+        getBtn.addActionListener(e -> {
+            int selectedRow = table.getSelectedRow(); 
+            if (selectedRow == -1) {
+                JOptionPane.showMessageDialog(this, "No row selected!");
+            } else {
+                String name = table.getValueAt(selectedRow, 1).toString();
+                JOptionPane.showMessageDialog(this, "Selected: " + name);
+            }
+        });
+        add(getBtn, BorderLayout.SOUTH);
+
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new Qn4_JTableDisplay();
+    }
+}
